@@ -1,0 +1,20 @@
+{
+  "name": "todoapp",
+  "version": "1.0.0",
+  "description": "Simple Todo application using the MEAN (Mongo, Express, Angular, Node) stack",
+  "main": "server.js",
+  "scripts": {
+    "test": "nodemon server",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevonHogencamp/TodoApp.git"
+  },
+  "author": "Devon Hogencamp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DevonHogencamp/TodoApp/issues"
+  },
+  "homepage": "https://github.com/DevonHogencamp/TodoApp#readme"
+}
