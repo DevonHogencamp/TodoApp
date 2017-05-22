@@ -1,8 +1,9 @@
 /*
 * server.js
 * =========================
-* Configure our application
+* Import all of our dependencies
 * Connect to our database
+* Configure our application
 * Create our Mongoose models
 * Define routes for our RESTful API
 * Define routes for our frontend Angular application
