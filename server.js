@@ -83,6 +83,35 @@ app.get('api/todos', function (req, res) {
 
 });
 
+/* Create a new Todo and send back all of the todos that we now have */
+app.post('api/todos', function (req, res) {
+
+    // Create a todo from the AJAX call from Angular
+    Todo.create({
+
+        text: req.body.text,
+        done: false
+
+    }, function (err, todo) {
+        if (err) {
+            res.send(err);
+        }
+
+        // Get and return all of the todos after we create one
+        Todo.find(function (err, todos) {
+
+            // If there is an error send it, if not then send the data we get
+            if (err) {
+                res.send(err);
+            }
+
+            res.json(todos);
+
+        });
+    });
+
+});
+
 // listen (start app with node server.js)
 app.listen(8080);
 console.log("App listening on port 8080");
