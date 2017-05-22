@@ -9,7 +9,7 @@
 */
 
 // Setup this main module
-var TodoApp = angular.module('TodoApp', []);
+var TodoApp = angular.module('TodoApp', ['ngRoute']);
 
 // Main Controller - Handles all operations of Todo App
 function mainController($scope, $http) {
