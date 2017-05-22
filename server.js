@@ -142,6 +142,14 @@ app.delete('api/todos/:todoId', function (req, res) {
 
 });
 
+/*
+* Server the Frontend App to the user
+* We only need the index.html because Angular gives us Single Page Env
+*/
+app.get('*', function (req, res) {
+    res.sendFile('index.html');
+});
+
 // listen (start app with node server.js)
 app.listen(8080);
 console.log("App listening on port 8080");
