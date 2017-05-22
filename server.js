@@ -93,6 +93,7 @@ app.post('api/todos', function (req, res) {
         done: false
 
     }, function (err, todo) {
+        // If there is an error send it, if not then send the data we get
         if (err) {
             res.send(err);
         }
@@ -108,6 +109,34 @@ app.post('api/todos', function (req, res) {
             res.json(todos);
 
         });
+    });
+
+});
+
+/* Delete a todo based on the id we get in the req params (url) then send back all of the todos left */
+app.delete('api/todos/:todoId', function (req, res) {
+
+    // Remove the Todo based on the req params :todoId we get in the url
+    Todo.remove({
+        _id: req.params.todoId
+    }, function (err, todo) {
+
+        // If there is an error send it, if not then get all the todos left
+        if (err) {
+            res.send(err);
+        }
+
+        Todo.find(function (err, todos) {
+
+            // If there is an error send it, if not then send the data we get
+            if (err) {
+                res.send(err);
+            }
+
+            res.json(todos);
+
+        });
+
     });
 
 });
