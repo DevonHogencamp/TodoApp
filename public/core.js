@@ -17,7 +17,7 @@ function mainController($scope, $http) {
     $scope.formData = {};
 
     // When we first get to index.html we will instantly get all of the todos
-    $http.get('api/todos')
+    $http.get('/api/todos')
         .success(function (data) {
             $scope.todos = data;
 
@@ -29,7 +29,7 @@ function mainController($scope, $http) {
 
     // When we click submit on the add form send the text to the Create part of our API
     $scope.createTodo = function () {
-        $http.post('api/todos', $scope.formData)
+        $http.post('/api/todos', $scope.formData)
             .success(function (data) {
 
                 // Clear the form data so the user can enter another item in
@@ -45,5 +45,19 @@ function mainController($scope, $http) {
             });
     };
 
-    
+    // When we click on a todo to delete this function will delete it from the db
+    $scope.deleteTodo = function (id) {
+
+        // Delete todo based on the id we get
+        $http.delete('/api/todos/' + id)
+            .success(function (data) {
+                $scope.todos = data;
+
+                console.log(data);
+            })
+            .error(function (err) {
+                console.log('Error: ' + err);
+            });
+
+    };
 }
